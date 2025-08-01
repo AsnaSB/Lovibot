@@ -1,0 +1,147 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;  /* 🚀 keeps the page fixed, no scrolling */
+}
+body {
+  font-family: Dancing Script;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #fff0f5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.chat-container {
+  width: 400px;
+  height: 600px;
+  background: rgba(255,255,255,0.7);
+backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+
+}
+
+.chat-header {
+    background: rgba(255,105,180,0.7);
+backdrop-filter: blur(6px);
+  text-shadow: 0 0 5px rgb(29, 24, 24), 0 0 10px #ff69b4;
+  box-shadow: 0 0 20px #d798b7, 0 0 40px #e0c4d3;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.chat-window::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-window::-webkit-scrollbar-thumb {
+  background: #ff69b4;
+  border-radius: 10px;
+}
+.chat-window::-webkit-scrollbar-track {
+  background: #ffe4ec;
+}
+
+
+.message {
+  font-family: "Dancing Script"; 
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 20px;
+  max-width: 75%;
+  margin: 8px 0;
+  padding: 12px 16px;
+  border-radius: 25px;
+  font-size: 16px;
+  line-height: 1.4;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  /* ✨ animation */
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.user {
+  align-self: flex-end;
+  background: #ffb6c1;
+}
+
+.bot {
+  align-self: flex-start;
+  background: #ffe4e1;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.chat-input button {
+     width: 55px;   /* fixed size instead of padding */
+  height: 50px;
+  margin: 0;
+  background: linear-gradient(135deg, #edd1e1, #ff69b4);
+  border: none;
+  color: white;
+  font-size: 22px;       /* bigger heart */
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 0 0 20px 0;
+  transition: transform 0.2s, background 0.3s;
+  text-shadow: 0 0 5px white;
+ clip-path: path("M24 4C19-2 9-2 4 4c-6 6-6 15 0 21l20 20 20-20c6-6 6-15 0-21-5-6-15-6-20 0z");
+}
+.chat-input button:hover {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  transform: scale(1.2);  /* heart grows on hover */
+}
+.float-symbol {
+  position: absolute;
+  bottom: 0;
+  pointer-events: none;  /* so you can still click inside chat */
+  z-index: 0;            /* emojis stay behind chat box */
+}
+
+.chat-container {
+  position: relative;    /* so z-index works */
+  z-index: 10;           /* keeps chat box above emojis */
+}
+
+@keyframes rise {
+  0%   { transform: translate(0, 0); opacity: 1; }
+  50%  { transform: translate(30px, -60vh); opacity: 0.7; }
+  100% { transform: translate(-30px, -100vh); opacity: 0.; }
+}

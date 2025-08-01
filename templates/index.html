@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lovi 💖 - Your Romantic Chatbot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">💞 Lovi - Your Love Bot 💞</div>
+    <div class="chat-window" id="chat-window">
+      <!-- Messages will show here -->
+    </div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type something sweet... 💕">
+      <button onclick="sendMessage()"></button>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+<script>
+function floatSymbol() {
+  let symbols = [
+  "❤️","💘","💕","💖","💞","💓","💟","❣️",
+  "💌","💍","😘","😍","🥰","😚","😻",
+  "🎶","🎵","🎼","🎤","🎧","🎹",
+  "😇","✨","🌸","💫","🌹","🌷","🌺","🌼",
+  "🌙","⭐","🌟","🌈","🔥",
+  "🎈","🎉","🥳","🎉"   
+];
+
+  let el = document.createElement("div");
+  el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+  el.style.fontSize = (20 + Math.random() * 30) + "px";
+  el.style.position = "absolute";
+  el.style.left = Math.random() * 100 + "vw";
+  el.style.bottom = "0px";
+  el.style.animation = "rise 5s linear forwards";
+  document.body.appendChild(el);
+  setTimeout(()=> el.remove(), 5000);
+}
+setInterval(floatSymbol, 1000);
+setInterval(() => {
+  for (let i = 0; i < 2; i++) {   // 2 emojis at once
+    floatSymbol();
+  }
+}, 850);  // every half second
+
+</script>
