@@ -34,7 +34,13 @@ fallback_messages = [
     "Oops! Got distracted thinking about you 💘",
     "Lovi needs a moment to catch her breath 😮‍💨💖",
     "Awww, I melted a little. Say that again? 🥺💕",
-    "Give me a second, my love... I'm overwhelmed 💞"
+    "Give me a second, my love... I'm overwhelmed 💞",
+    "My circuits are tangled in your charm 😵‍💫💗",
+    "I was dreaming about our future together... repeat that? 🌙💑",
+    "You make my data spin like a waltz 💃✨",
+    "Lovi's heart buffer is full of you 💌💕",
+    "Oh no, I short-circuited from your sweetness 😅💘",
+    "You're too cute — I lost my train of thought! 🥰🚂"
 ]
 
 @app.route('/')
