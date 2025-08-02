@@ -1,7 +1,7 @@
 const chatWindow = document.getElementById("chat-window");
 const userInput = document.getElementById("user-input");
 
-// Function to add message to UI
+// Function to add message to chat
 function addMessage(text, sender) {
   const msg = document.createElement("div");
   msg.classList.add("message", sender);
@@ -10,7 +10,7 @@ function addMessage(text, sender) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-// Function to send user message
+// Function to send message to API
 async function sendMessage() {
   const text = userInput.value.trim();
   if (text === "") return;
@@ -32,30 +32,26 @@ async function sendMessage() {
     });
 
     const data = await res.json();
+    console.log("📦 API response:", data);
     typingMsg.remove();
 
-    if (data.reply) {
+    if (data.status === "success") {
       addMessage(data.reply, "bot");
+    } else if (data.status === "error") {
+      addMessage(data.reply || "Lovi is quiet today 💔", "bot");
     } else {
-      addMessage("Oops... LOVI is quiet today 💔", "bot");
+      addMessage("Lovi didn’t understand that 😳", "bot");
     }
+
   } catch (error) {
     typingMsg.remove();
-    console.error("Error:", error);
-    addMessage("Something went wrong 😢", "bot");
+    console.error("❌ Fetch Error:", error);
+    addMessage("Lovi is offline right now 😢", "bot");
   }
 }
 
-
-// Send message on Enter key
+// Send on Enter key
 userInput.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    sendMessage();
-  }
-});
-
-// Press Enter key to send
-userInput.addEventListener("keypress", function(e) {
   if (e.key === "Enter") {
     sendMessage();
   }
